@@ -22,12 +22,14 @@ public class CrimePagerActivity extends FragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Create new ViewPager object.
         mViewPager = new ViewPager(this);
         mViewPager.setId(R.id.viewPager);
         setContentView(mViewPager);
 
         mCrimes = CrimeLab.get(this).getCrimes();
 
+        // Set adapter.
         FragmentManager fm = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fm) {
             @Override
@@ -45,7 +47,7 @@ public class CrimePagerActivity extends FragmentActivity {
         mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-
+                // Required override.
             }
 
             @Override
@@ -58,10 +60,11 @@ public class CrimePagerActivity extends FragmentActivity {
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
+                // Required override.
             }
         });
 
+        // Retrieve UUID from intent.
         UUID crimeId = (UUID)getIntent().getSerializableExtra(CrimeFragment.EXTRA_CRIME_ID);
         for (int i = 0; i < mCrimes.size(); i++) {
             if (mCrimes.get(i).getId().equals(crimeId)) {

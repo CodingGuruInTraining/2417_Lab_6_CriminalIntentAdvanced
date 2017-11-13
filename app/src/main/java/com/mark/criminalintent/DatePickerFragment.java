@@ -28,6 +28,7 @@ public class DatePickerFragment extends DialogFragment {
         Bundle args = new Bundle();
         args.putSerializable(EXTRA_DATE, date);
 
+        // Create new fragment and set arguments.
         DatePickerFragment fragment = new DatePickerFragment();
         fragment.setArguments(args);
 
@@ -39,6 +40,7 @@ public class DatePickerFragment extends DialogFragment {
             return;
         }
 
+        // Create new intent and attach date object.
         Intent i = new Intent();
         i.putExtra(EXTRA_DATE, mDate);
 
